@@ -1,0 +1,54 @@
+language: rust
+cache: cargo
+dist: trusty
+sudo: false
+
+env:
+  global:
+  - PROJECT_NAME=netlyser
+
+matrix:
+  include:
+    # Default test+release version
+    - os: osx
+      rust: stable
+      env: TARGET=x86_64-apple-darwin
+    - os: linux
+      rust: stable
+      env: TARGET=x86_64-unknown-linux-gnu
+
+    # Extra targets for linux only
+    - os: linux
+      rust: stable
+      env: TARGET=i686-unknown-linux-musl
+    - os: linux
+      rust: stable
+      env: TARGET=x86_64-unknown-linux-musl
+
+    # Minimum version advertised in readme
+    - os: linux
+      rust: 1.34.0
+      env: TARGET=x86_64-unknown-linux-gnu
+    - os: osx
+      rust: 1.34.0
+      env: TARGET=x86_64-apple-darwin
+
+    # Non-critical but interesting for upcoming Rust changes
+    - os: linux
+      rust: nightly
+      env: TARGET=x86_64-unknown-linux-gnu
+    - os: osx
+      rust: nightly
+      env: TARGET=x86_64-apple-darwin
+
+  allow_failures:
+    - rust: nightly
+  fast_finish: true
+
+before_script: ci/before_script.sh
+script: ci/script.sh
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always

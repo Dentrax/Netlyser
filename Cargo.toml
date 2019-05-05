@@ -1,0 +1,38 @@
+[package]
+name = "netlyser"
+version = "0.1.0"
+authors = ["Furkan Türkal <furkan.turkal@hotmail.com>"]
+description = "Executes commands in response to file modifications"
+documentation = "https://github.com/Dentrax/Netlyser"
+homepage = "https://github.com/Dentrax/Netlyser"
+repository = "https://github.com/watchexec/watchexec"
+readme = "README.MD"
+keywords = ["nmap", "presence", "detection", "home", "notifier"]
+categories = ["command-line-utilities"]
+license = "MIT"
+exclude = ["/ci/*", "/screenshots/*", "/.travis.yml"]
+
+[dependencies]
+console = "0.7"
+chrono = "0.4.6"
+log = "^0.4.6"
+env_logger = "0.6.1"
+pnet = "0.22"
+regex = "1"
+tempfile = "^3.0.7"
+lazy_static = "1.3.0"
+serde = "1.0.90"
+serde_derive = "1.0"
+serde-xml-rs = "0.3.1"
+serde_yaml = "^0.8.8"
+rusqlite = "0.18.0"
+notify-rust = "3.5.0"
+
+[dependencies.clap]
+version = "2.33.0"
+default-features = false
+features = ["wrap_help"]
+
+[[bin]]
+name = "netlyser"
+doc = false
