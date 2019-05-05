@@ -50,8 +50,12 @@ matrix:
     - rust: nightly
   fast_finish: true
 
-before_script: ci/before_script.sh
-script: ci/script.sh
+before_script:
+  rustup target add $TARGET
+  cargo clean --target $TARGET --verbose
+
+script:
+  cargo build --target $TARGET --verbose
 
 notifications:
   email:
