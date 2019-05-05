@@ -7,6 +7,11 @@ env:
   global:
   - PROJECT_NAME=netlyser
 
+addons:
+  apt:
+    packages:
+      - fakeroot
+
 matrix:
   include:
     # Default test+release version
