@@ -1,9 +1,15 @@
+// ====================================================
+// Netlyser Copyright(C) 2019 Furkan Türkal
+// This program comes with ABSOLUTELY NO WARRANTY; This is free software,
+// and you are welcome to redistribute it under certain conditions; See
+// file LICENSE, which is part of this source code package, for details.
+// ====================================================
+
 use std::{
     collections::HashMap,
     net::{Ipv4Addr},
 };
 
-use pnet;
 use pnet::util::{MacAddr};
 
 use crate::net;
@@ -212,7 +218,7 @@ pub fn migrate_to_host_list(macmap: &HashMap<MacAddr, config::HostInfo>, gw: &ne
         if h.ip.eq(&gw.ip){
             h.set_name("GATEWAY".to_string());
             h.set_device_name("GATEWAY".to_string());
-            hosts.push(current.clone().expect("Could not clone device"));
+            hosts.push(h.clone());
             continue;
         }
 
@@ -231,7 +237,7 @@ pub fn migrate_to_host_list(macmap: &HashMap<MacAddr, config::HostInfo>, gw: &ne
             _ => println!("Can't find MAC for IP: {}", h.ip),
         }
 
-        hosts.push(current.clone().expect("Could not clone device"));
+        hosts.push(h.clone());
     }
 
     hosts
