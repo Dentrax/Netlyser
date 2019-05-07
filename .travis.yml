@@ -50,6 +50,9 @@ matrix:
     - rust: nightly
   fast_finish: true
 
+before_install:
+  - sudo apt-get install -y libdbus-1-dev libdbus-glib-1-dev
+
 before_script:
   - rustup target add $TARGET
   - cargo clean --target $TARGET --verbose
