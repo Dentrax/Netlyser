@@ -1,0 +1,6 @@
+[target.i686-unknown-linux-musl.dbus]
+rustc-link-search = ["/usr/lib/x86_64-linux-gnu/libdbus-1.so"]
+rustc-link-lib = ["dbus-1"]
+
+[target.i686-unknown-linux-musl]
+linker = "x86_64-linux-musl-gcc"
