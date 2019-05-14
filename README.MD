@@ -92,7 +92,7 @@ general:
   notify_on_disconnect: true
 
 hosts:
-  - mac: "1C:99:4C:2B:3D:3B"
+  - mac: "01:23:45:67:89:AB"
     name: "Furkan"
     device: "iPhone"
 
